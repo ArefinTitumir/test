@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>simulation of calcul </title>
+</head>
+
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .mt-3,
+        .my-3 {
+            margin-top: 1rem !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        h3{
+            margin: 0;
+            margin: auto;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        .col,
+        .col-1,
+        .col-10,
+        .col-11,
+        .col-12,
+        .col-2,
+        .col-3,
+        .col-4,
+        .col-5,
+        .col-6,
+        .col-7,
+        .col-8,
+        .col-9,
+        .col-auto,
+        .col-lg,
+        .col-lg-1,
+        .col-lg-10,
+        .col-lg-11,
+        .col-lg-12,
+        .col-lg-2,
+        .col-lg-3,
+        .col-lg-4,
+        .col-lg-5,
+        .col-lg-6,
+        .col-lg-7,
+        .col-lg-8,
+        .col-lg-9,
+        .col-lg-auto,
+        .col-md,
+        .col-md-1,
+        .col-md-10,
+        .col-md-11,
+        .col-md-12,
+        .col-md-2,
+        .col-md-3,
+        .col-md-4,
+        .col-md-5,
+        .col-md-6,
+        .col-md-7,
+        .col-md-8,
+        .col-md-9,
+        .col-md-auto,
+        .col-sm,
+        .col-sm-1,
+        .col-sm-10,
+        .col-sm-11,
+        .col-sm-12,
+        .col-sm-2,
+        .col-sm-3,
+        .col-sm-4,
+        .col-sm-5,
+        .col-sm-6,
+        .col-sm-7,
+        .col-sm-8,
+        .col-sm-9,
+        .col-sm-auto,
+        .col-xl,
+        .col-xl-1,
+        .col-xl-10,
+        .col-xl-11,
+        .col-xl-12,
+        .col-xl-2,
+        .col-xl-3,
+        .col-xl-4,
+        .col-xl-5,
+        .col-xl-6,
+        .col-xl-7,
+        .col-xl-8,
+        .col-xl-9,
+        .col-xl-auto {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+
+        }
+
+        .btn:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+
+        [type=button]:not(:disabled),
+        [type=reset]:not(:disabled),
+        [type=submit]:not(:disabled),
+        button:not(:disabled) {
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        [type=button],
+        button {
+            -webkit-appearance: button;
+        }
+
+        button [type=button] {
+            -webkit-appearance: button;
+        }
+
+        .btn {
+            background-color: #93D5F4 !important;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        modal-header .close {
+            padding: 1rem 1rem;
+            margin: -1rem -1rem -1rem auto;
+        }
+
+        button.close {
+            padding: 0;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: .5;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #212529 !important;
+            text-shadow: 0 1px 0 #fff;
+            opacity: .5;
+        }
+
+        .close {
+            color: #f5f5f5 !important;
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .table-bordered thead td,
+        .table-bordered thead th {
+            border-bottom-width: 2px;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+
+        .table td,
+        .table th {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        th {
+            text-align: inherit;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .mb-3,
+        .my-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .fade {
+            transition: opacity .15s linear;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1050;
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            outline: 0px;
+        }
+
+        .modal.fade .modal-dialog {
+            transition: -webkit-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+            -webkit-transform: translate(0, -50px);
+            transform: translate(0, -50px);
+        }
+
+        .modal.show .modal-dialog {
+            -webkit-transform: none;
+            transform: none;
+        }
+
+        @media (min-width: 992px) {
+
+            .modal-lg,
+            .modal-xl {
+                max-width: 800px;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .modal-dialog {
+                max-width: 500px;
+                margin: 1.75rem auto;
+            }
+        }
+
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: auto !important;
+            pointer-events: none;
+        }
+
+        .modal-lg,
+        .modal-xl {
+            max-width: 1094px !important;
+        }
+
+        @media (min-width: 576px) {
+            .modal-dialog {
+                max-width: 500px;
+                margin: 1.75rem auto;
+            }
+        }
+
+        @media (min-width: 992px) {
+
+            .modal-lg,
+            .modal-xl {
+                max-width: 800px;
+            }
+        }
+        .modal-lg,
+        .modal-xl {
+            max-width: 1094px !important;
+        }
+
+        .modal-content {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: .3rem;
+            outline: 0;
+        }
+
+        .modal-header {
+            display: -ms-flexbox;
+            display: flex;
+            text-align: center;
+            -ms-flex-align: start;
+            background-color: #000000 !important;
+            align-items: flex-start;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 1rem 1rem;
+            border-bottom: 1px solid #dee2e6;
+            border-top-left-radius: calc(.3rem - 1px);
+            border-top-right-radius: calc(.3rem - 1px);
+        }
+
+        .modal-body {
+            position: relative;
+            -ms-flex: 1 1 auto;
+            background-color: #0C2D48;
+            flex: 1 1 auto;
+            padding: 0;
+        }
+
+        .modal-footer {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            background-color: #000000;
+            flex-wrap: wrap;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            padding: 0;
+            border-top: 1px solid #dee2e6;
+            border-bottom-right-radius: calc(.3rem - 1px);
+            border-bottom-left-radius: calc(.3rem - 1px);
+        }
+
+        .btn:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+
+        [type="button"]:not(:disabled),
+        [type="reset"]:not(:disabled),
+        [type="submit"]:not(:disabled),
+        button:not(:disabled) {
+            cursor: pointer;
+        }
+
+        .modal-footer>* {
+            margin: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: rgb(33, 37, 41);
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        [type="button"],
+        [type="reset"],
+        [type="submit"],
+        button {
+            appearance: button;
+        }
+
+        .mt-3,
+        .my-3 {
+            margin-top: 1rem !important;
+        }
+
+        @media (min-width: 1200px) {
+
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm,
+            .container-xl {
+                max-width: 1140px;
+            }
+        }
+
+        @media (min-width: 992px) {
+
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            .container,
+            .container-md,
+            .container-sm {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 576px) {
+
+            .container,
+            .container-sm {
+                max-width: 540px;
+            }
+        }
+
+        .container,
+        .container-fluid,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .mt-3,
+        .my-3 {
+            margin-top: 1rem !important;
+        }
+
+        #calculate {
+            background-color: #93D5F4 !important;
+            color: #0C2D48;
+            font-weight: 600;
+        }
+
+        .modal-content {
+            background-color: #0C2D48 !important;
+            min-width: 1112px !important;
+        }
+
+        .modal-title {
+            color: #f5f5f5;
+        }
+
+        .close {
+            color: #f5f5f5 !important;
+        }
+
+        .modal-lg,
+        .modal-xl {
+            max-width: 1094px !important;
+        }
+    </style>
+    <div class="container mt-3">
+
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <table class="table table-bordered" style="background-color: #0C2D48; color: white;">
+                    <thead style="background-color: #000000;">
+
+                        <tr>
+                            <th scope="col" style="padding: 20px;">Janvier</th>
+                            <th scope="col" style="padding: 20px;">Mars</th>
+                            <th scope="col" style="padding: 20px;">Juin</th>
+                            <th scope="col" style="padding: 20px;">Juillet </th>
+                            <th scope="col" style="padding: 20px;">Août </th>
+                            <th scope="col" style="padding: 20px;">Septembre </th>
+                            <th scope="col" style="padding: 20px;">Octobre </th>
+                            <th scope="col" style="padding: 20px;">Novembre</th>
+                            <th scope="col" style="padding: 20px;">Decembre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="12">
+                                <b>Nbre de nouveaux inscrits </b>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control row1" id="at_1"></td>
+                            <td><input type="text" class="form-control row1" id="at_2"></td>
+                            <td><input type="text" class="form-control row1" id="at_3"></td>
+                            <td><input type="text" class="form-control row1" id="at_4"></td>
+                            <td><input type="text" class="form-control row1" id="at_5"></td>
+                            <td><input type="text" class="form-control row1" id="at_6"></td>
+                            <td><input type="text" class="form-control row1" id="at_7"></td>
+                            <td><input type="text" class="form-control row1" id="at_8"></td>
+                            <td><input type="text" class="form-control row1" id="at_9"></td>
+                        </tr>
+
+
+                        <tr>
+                            <th colspan="12">
+                                <b> Offre proposée (montants offerts sur l'abo ex: 3 mois à 9€ au lieu de 39€ = 90€)</b>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class="form-control row2" id="at_10"></td>
+                            <td><input type="text" class=" form-control row2" id="at_11"></td>
+                            <td><input type="text" class=" form-control row2" id="at_12"></td>
+                            <td><input type="text" class=" form-control row2" id="at_13"></td>
+                            <td><input type="text" class=" form-control row2" id="at_14"></td>
+                            <td><input type="text" class=" form-control row2" id="at_15"></td>
+                            <td><input type="text" class=" form-control row2" id="at_16"></td>
+                            <td><input type="text" class=" form-control row2" id="at_17"></td>
+                            <td><input type="text" class=" form-control row2" id="at_18"></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="12">
+                                <b>Montant encaissé (ex: 3mois à 9€ = 27€)</b>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class="form-control  row3" id="at_19"></td>
+                            <td><input type="text" class=" form-control row3" id="at_20"></td>
+                            <td><input type="text" class=" form-control row3" id="at_21"></td>
+                            <td><input type="text" class=" form-control row3" id="at_22"></td>
+                            <td><input type="text" class=" form-control row3" id="at_23"></td>
+                            <td><input type="text" class=" form-control row3" id="at_24"></td>
+                            <td><input type="text" class=" form-control row3" id="at_25"></td>
+                            <td><input type="text" class=" form-control row3" id="at_26"></td>
+                            <td><input type="text" class=" form-control row3" id="at_27"></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="12"> <b> Montant des frais offerts </b>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class=" form-control row4" id="at_28"></td>
+                            <td><input type="text" class=" form-control row4" id="at_29"></td>
+                            <td><input type="text" class=" form-control row4" id="at_30"></td>
+                            <td><input type="text" class=" form-control row4" id="at_31"></td>
+                            <td><input type="text" class=" form-control row4" id="at_32"></td>
+                            <td><input type="text" class=" form-control row4" id="at_33"></td>
+                            <td><input type="text" class=" form-control row4" id="at_34"></td>
+                            <td><input type="text" class=" form-control row4" id="at_35"></td>
+                            <td><input type="text" class=" form-control row4" id="at_36"></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="12">
+                                <b> Montant des frais encaissés (147-60€ = 87€)<b>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class=" form-control row5" id="at_37"></td>
+                            <td><input type="text" class=" form-control row5" id="at_38"></td>
+                            <td><input type="text" class=" form-control row5" id="at_39"></td>
+                            <td><input type="text" class=" form-control row5" id="at_40"></td>
+                            <td><input type="text" class=" form-control row5" id="at_41"></td>
+                            <td><input type="text" class=" form-control row5" id="at_42"></td>
+                            <td><input type="text" class=" form-control row5" id="at_43"></td>
+                            <td><input type="text" class=" form-control row5" id="at_44"></td>
+                            <td><input type="text" class=" form-control row5" id="at_45"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-12 text-center mb-3">
+                        <button type="button" class=" text-center btn" id="calculate" data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                            Calculer
+                        </button>
+                        <div class="modal fade bd-example-modal-lg" style="overflow: auto;" id="exampleModalCenter"
+                            tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLongTitle;">Résultat</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-bordered "
+                                            style="background-color: #0C2D48; color: white; overflow: auto ;">
+                                            <thead>
+                                                <tr style="background-color: #000000;">
+                                                    <th scope="col" style="padding: 20px;">Janvier</th>
+                                                    <th scope="col" style="padding: 20px;">Mars</th>
+                                                    <th scope="col" style="padding: 20px;">Juin</th>
+                                                    <th scope="col" style="padding: 20px;">Juillet </th>
+                                                    <th scope="col" style="padding: 20px;">Août </th>
+                                                    <th scope="col" style="padding: 20px;">Septembre </th>
+                                                    <th scope="col" style="padding: 20px;">Octobre </th>
+                                                    <th scope="col" style="padding: 20px;">Novembre</th>
+                                                    <th scope="col" style="padding: 20px;">Decembre</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="12" style="text-align: left;">
+                                                        <b> Total non encaissé </b>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                    <td class="rs_row1"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="12" style="text-align: left;">
+                                                        <b> Total annuel non encaissé </b>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="12" id="trslt_1" style="text-align: left;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="12" style="text-align: left;">
+                                                        <b> Total encaissé </b>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                    <td class="rs_row2"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="12" style="text-align: left;">
+                                                        <b> Total CA potentiel </b>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                    <td class="rs_row3"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="12" style="text-align: left;">
+                                                        <b>Total CA potentiel annuel période de promo </b>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="12" id="trslt_2" style="text-align: left;"></td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $("#calculate").on("click", function () {
+
+                const nftd = Intl.NumberFormat("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                let in_row1 = [];
+                $(".row1").each(function () {
+                    let vl = Number($(this).val());
+                    in_row1.push(vl);
+                });
+
+                let in_row2 = [];
+                $(".row2").each(function () {
+                    let vl = Number($(this).val());
+                    in_row2.push(vl);
+                });
+
+                let in_row3 = [];
+                $(".row3").each(function () {
+                    let vl = Number($(this).val());
+                    in_row3.push(vl);
+                });
+
+                let in_row4 = [];
+                $(".row4").each(function () {
+                    let vl = Number($(this).val());
+                    in_row4.push(vl);
+                });
+
+                let in_row5 = [];
+                $(".row5").each(function () {
+                    let vl = Number($(this).val());
+                    in_row5.push(vl);
+                });
+
+                let rs_row1 = [];
+                let rs_row2 = [];
+                let rs_row3 = [];
+
+                let i = 0;
+                for (i = 0; i < 9; i++) {
+                    rs_row1.push(in_row1[i] * (in_row2[i] + in_row4[i]));
+                    rs_row2.push(in_row1[i] * (in_row3[i] + in_row5[i]));
+                }
+
+                let rs_row1_sum = rs_row1.reduce(function (total, num) {
+                    return total + num;
+                });
+
+                for (i = 0; i < 9; i++) {
+                    if (i == 0) {
+                        rs_row3.push(rs_row2[i] + rs_row1_sum);
+                    } else {
+                        rs_row3.push(rs_row2[i]);
+                    }
+                }
+
+                let rs_row2_sum = rs_row3.reduce(function (total, num) {
+                    return total + num;
+                });
+
+                if ($('.form-control').val().length === 0) {
+                    confirm('Please input data first');
+                    return false;
+                }
+                else{
+
+                    $(".rs_row1").each(function (i) {
+                    $(this).text(nftd.format(rs_row1[i]));
+                });
+                $(".rs_row2").each(function (i) {
+                    $(this).text(nftd.format(rs_row2[i]));
+                });
+                $(".rs_row3").each(function (i) {
+                    $(this).text(nftd.format(rs_row3[i]));
+                });
+                $("#trslt_1").text(nftd.format(rs_row1_sum));
+                $("#trslt_2").text(nftd.format(rs_row2_sum));
+                }
+
+
+            })
+
+        })
+    </script>
+
+</body>
+
+</html>
